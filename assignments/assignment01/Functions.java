@@ -858,8 +858,7 @@ final class Functions
          getOccupancyCell(world, pos) != null;
    }
 
-   public static Optional<Entity> nearestEntity(List<Entity> entities,
-      Point pos)
+   public static Optional<Entity> nearestEntity(List<Entity> entities, Point pos)
    {
       if (entities.isEmpty())
       {
@@ -1023,6 +1022,7 @@ final class Functions
    {
       return Math.min(high, Math.max(value, low));
    }
+
 
    public static void shiftView(WorldView view, int colDelta, int rowDelta)
    {
