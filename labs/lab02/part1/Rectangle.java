@@ -16,10 +16,10 @@ public class Rectangle {
         return bottomRight;
     }
 
-    public double perimeter() {
-        return 2 + (
-                this.getBottomRight().getX() - this.getTopLeft().getX() +
-                        this.getTopLeft().getY() - this.getBottomRight().getY() );
-    }
+//    public double perimeter() {
+//        return 2 + (
+//                this.getBottomRight().getX() - this.getTopLeft().getX() +
+//                        this.getTopLeft().getY() - this.getBottomRight().getY() );
+//    }
 
 }

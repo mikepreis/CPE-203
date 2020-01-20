@@ -10,15 +10,15 @@ public class Bigger {
         return Math.max(polygonPerimeter, resultFromFirstComparison);
     }
 
-    public static double whichIsBigger2(Circle circle, Rectangle rectangle, Polygon polygon) {
-
-        double circlePerimeter = circle.perimeter();
-        double rectanglePerimeter = rectangle.perimeter();
-        double polygonPerimeter = polygon.perimeter();
-        double resultFromFirstComparison = Math.max(circlePerimeter, rectanglePerimeter);
-
-        return Math.max(polygonPerimeter, resultFromFirstComparison);
-    }
+//    public static double whichIsBigger2(Circle circle, Rectangle rectangle, Polygon polygon) {
+//
+//        double circlePerimeter = circle.perimeter();
+//        double rectanglePerimeter = rectangle.perimeter();
+//        double polygonPerimeter = polygon.perimeter();
+//        double resultFromFirstComparison = Math.max(circlePerimeter, rectanglePerimeter);
+//
+//        return Math.max(polygonPerimeter, resultFromFirstComparison);
+//    }
 }
 
 
