@@ -87,9 +87,6 @@ final class Entity
    public EntityKind getKind(){
       return this.kind;
    }
-   public String getId(){
-      return this.id;
-   }
    public Point getPosition(){
       return this.position;
    }
