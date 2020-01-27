@@ -94,13 +94,13 @@ public final class VirtualWorld extends PApplet
       }
    }
 
-   public static Background createDefaultBackground(ImageStore imageStore)
+   public Background createDefaultBackground(ImageStore imageStore)
    {
       return new Background(DEFAULT_IMAGE_NAME,
          imageStore.getImageList( DEFAULT_IMAGE_NAME));
    }
 
-   public static PImage createImageColored(int width, int height, int color)
+   public PImage createImageColored(int width, int height, int color)
    {
       PImage img = new PImage(width, height, RGB);
       img.loadPixels();
@@ -112,7 +112,7 @@ public final class VirtualWorld extends PApplet
       return img;
    }
 
-   private static void loadImages(String filename, ImageStore imageStore,
+   private void loadImages(String filename, ImageStore imageStore,
       PApplet screen)
    {
       try
@@ -126,7 +126,7 @@ public final class VirtualWorld extends PApplet
       }
    }
 
-   public static void loadWorld(WorldModel world, String filename,
+   public void loadWorld(WorldModel world, String filename,
       ImageStore imageStore)
    {
       try
@@ -140,7 +140,7 @@ public final class VirtualWorld extends PApplet
       }
    }
 
-   public static void scheduleActions(WorldModel world,
+   public void scheduleActions(WorldModel world,
       EventScheduler scheduler, ImageStore imageStore)
    {
       for (Entity entity : world.getEntities())
