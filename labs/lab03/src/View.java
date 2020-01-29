@@ -8,4 +8,6 @@ public class View {
     public Product getProduct() {
         return product;
     }
+
+
 }
