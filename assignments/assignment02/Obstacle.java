@@ -1,7 +1,7 @@
 import processing.core.PImage;
 import java.util.List;
 
-public class Blacksmith implements EntityInterface{
+public class Obstacle {
 
     private String id;
     private Point position;
@@ -12,7 +12,9 @@ public class Blacksmith implements EntityInterface{
     private int actionPeriod;
     private int animationPeriod;
 
-    public Blacksmith(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
+
+
+    public Obstacle(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
         this.id = id;
         this.position = position;
         this.images = images;
@@ -64,8 +66,9 @@ public class Blacksmith implements EntityInterface{
         this.imageIndex = (this.imageIndex + 1) % this.images.size();
     }
 
-    public static Blacksmith createBlacksmith(String id, Point position, List<PImage> images)
+    public static Obstacle createObstacle(String id, Point position, List<PImage> images)
     {
-        return new Blacksmith(id, position, images, 0, 0, 0, 0);
+        return new Obstacle(id, position, images, 0, 0, 0, 0);
     }
+
 }

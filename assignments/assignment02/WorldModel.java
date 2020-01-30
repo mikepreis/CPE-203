@@ -6,8 +6,8 @@ final class WorldModel
    private int numRows;
    private int numCols;
    private Background background[][];
-   private Entity occupancy[][];
-   private Set<Entity> entities;
+   private EntityInterface occupancy[][];
+   private Set<EntityInterface> entities;
    private static final int ORE_REACH = 1;
 
    public WorldModel(int numRows, int numCols, Background defaultBackground)
@@ -15,7 +15,7 @@ final class WorldModel
       this.numRows = numRows;
       this.numCols = numCols;
       this.background = new Background[numRows][numCols];
-      this.occupancy = new Entity[numRows][numCols];
+      this.occupancy = new EntityInterface[numRows][numCols];
       this.entities = new HashSet<>();
 
       for (int row = 0; row < numRows; row++)
@@ -24,16 +24,16 @@ final class WorldModel
       }
    }
 
-   public Set<Entity> getEntities() {
+   public Set<EntityInterface> getEntities() {
       return this.entities;
    }
 
-   public Optional<Entity> findNearest(Point pos, EntityKind kind)
+   public Optional<EntityInterface> findNearest(Point pos, Object kind)
    {
-      List<Entity> ofType = new LinkedList<>();
-      for (Entity entity : this.entities)
+      List<EntityInterface> ofType = new LinkedList<>();
+      for (EntityInterface entity : this.entities)
       {
-         if (entity.getKind() == kind)
+         if (entity.getClass() == kind.getClass())
          {
             ofType.add(entity);
          }
@@ -42,7 +42,7 @@ final class WorldModel
       return nearestEntity(ofType, pos);
    }
 
-   public static Optional<Entity> nearestEntity(List<Entity> entities, Point pos)
+   public static Optional<EntityInterface> nearestEntity(List<EntityInterface> entities, Point pos)
    {
       if (entities.isEmpty())
       {
@@ -50,10 +50,10 @@ final class WorldModel
       }
       else
       {
-         Entity nearest = entities.get(0);
+         EntityInterface nearest = entities.get(0);
          int nearestDistance = nearest.getPosition().distanceSquared(pos);
 
-         for (Entity other : entities)
+         for (EntityInterface other : entities)
          {
             int otherDistance = other.getPosition().distanceSquared(pos);
 
@@ -68,7 +68,7 @@ final class WorldModel
       }
    }
 
-   public void removeEntity(Entity entity)
+   public void removeEntity(EntityInterface entity)
    {
       removeEntityAt(entity.getPosition());
    }
@@ -77,7 +77,7 @@ final class WorldModel
    {
       if (withinBounds(pos) && getOccupancyCell(pos) != null)
       {
-         Entity entity = getOccupancyCell(pos);
+         EntityInterface entity = getOccupancyCell(pos);
 
          /* this moves the entity just outside of the grid for
             debugging purposes */
@@ -87,7 +87,7 @@ final class WorldModel
       }
    }
 
-   public Optional<Entity> getOccupant(Point pos)
+   public Optional<EntityInterface> getOccupant(Point pos)
    {
       if (isOccupied(pos))
       {
@@ -99,12 +99,12 @@ final class WorldModel
       }
    }
 
-   public Entity getOccupancyCell(Point pos)
+   public EntityInterface getOccupancyCell(Point pos)
    {
       return this.occupancy[pos.getY()][pos.getX()];
    }
 
-   public void setOccupancyCell(Point pos, Entity entity)
+   public void setOccupancyCell(Point pos, EntityInterface entity)
    {
       this.occupancy[pos.getY()][pos.getX()] = entity;
    }
@@ -130,7 +130,7 @@ final class WorldModel
    Assumes that there is no entity currently occupying the
    intended destination cell.
 */
-   public void addEntity(Entity entity)
+   public void addEntity(EntityInterface entity)
    {
       if (withinBounds(entity.getPosition()))
       {
@@ -139,7 +139,7 @@ final class WorldModel
       }
    }
 
-   public void moveEntity(Entity entity, Point pos)
+   public void moveEntity(EntityInterface entity, Point pos)
    {
       Point oldPos = entity.getPosition();
       if (withinBounds(pos) && !pos.equals(oldPos))
@@ -169,14 +169,16 @@ final class WorldModel
       return Optional.empty();
    }
 
-   public void tryAddEntity( Entity entity)
+   public void tryAddEntity( EntityInterface entity)
    {
       if (this.isOccupied( entity.getPosition()))
       {
+         // arguably the wrong type of exception, but we are not
+         // defining our own exceptions yet
          throw new IllegalArgumentException("position occupied");
       }
 
-      this.addEntity(entity);
+      this.addEntity( entity);
    }
 
    public Optional<PImage> getBackgroundImage( Point pos)
@@ -211,9 +213,9 @@ final class WorldModel
          return ((Background)entity).getImages()
                  .get(((Background)entity).getImageIndex());
       }
-      else if (entity instanceof Entity)
+      else if (entity instanceof EntityInterface)
       {
-         return ((Entity)entity).getImages().get(((Entity)entity).getImageIndex());
+         return ((EntityInterface)entity).getImages().get(((EntityInterface)entity).getImageIndex());
       }
       else
       {

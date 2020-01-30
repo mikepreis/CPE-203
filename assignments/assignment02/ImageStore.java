@@ -104,7 +104,7 @@ final class ImageStore
       {
          try
          {
-            if (!Entity.processLine(in.nextLine(), world, imageStore))
+            if (!VirtualWorld.processLine(in.nextLine(), world, imageStore))
             {
                System.err.println(String.format("invalid entry on line %d",
                        lineNumber));

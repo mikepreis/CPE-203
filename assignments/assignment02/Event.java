@@ -1,10 +1,10 @@
 final class Event
 {
-   private Action action;
+   private ActionInterface action;
    private long time;
-   private Entity entity;
+   private EntityInterface entity;
 
-   public Event(Action action, long time, Entity entity)
+   public Event(ActionInterface action, long time, EntityInterface entity)
    {
       this.action = action;
       this.time = time;
@@ -15,11 +15,11 @@ final class Event
       return this.time;
    }
 
-   public Action getAction() {
+   public ActionInterface getAction() {
       return this.action;
    }
 
-   public Entity getEntity() {
+   public EntityInterface getEntity() {
       return this.entity;
    }
 }
