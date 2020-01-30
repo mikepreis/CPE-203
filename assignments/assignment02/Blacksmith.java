@@ -12,6 +12,7 @@ public class Blacksmith implements EntityInterface{
     private int actionPeriod;
     private int animationPeriod;
 
+
     public Blacksmith(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
         this.id = id;
         this.position = position;
