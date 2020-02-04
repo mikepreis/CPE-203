@@ -1,15 +1,11 @@
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
-import java.util.function.Predicate;
 import java.util.stream.Collectors;
 import java.util.Arrays;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.LinkedList;
-
 import java.awt.Color;
 import java.awt.Point;
-
 import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
