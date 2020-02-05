@@ -16,7 +16,6 @@ public class TestCases
 {
    public static final double DELTA = 0.00001;
 
-   /* some sample tests but you must write more! see lab write up */
    @Test
    public void testCircleGetArea()
    {
@@ -26,12 +25,30 @@ public class TestCases
    }
 
    @Test
-   public void testCircleGetArea()
+   public void testConvexPolygonGetArea()
    {
-      Circle c = new Circle(5.678, new Point(2, 3), Color.BLACK);
+      Point[] points = {new Point(1, 2), new Point(4, 2), new Point(6, 8), new Point(2, 3)};
+      ConvexPolygon c = new ConvexPolygon(points, Color.BLACK);
 
-      assertEquals(101.2839543, c.getArea(), DELTA);
+      assertEquals(8.5, c.getArea(), DELTA);
    }
+
+   @Test
+   public void testRectangleGetArea()
+   {
+      Rectangle r = new Rectangle(4, 6, new Point(4, 6), Color.BLACK);
+
+      assertEquals(24, r.getArea(), DELTA);
+   }
+
+   @Test
+   public void testTriangleGetArea()
+   {
+      Triangle r = new Triangle(new Point(1,2), new Point(4, 5), new Point(6, 7), Color.BLACK);
+
+      assertEquals(6, r.getArea(), DELTA);
+   }
+
 
    @Test
    public void testCircleGetPerimeter()
@@ -51,7 +68,7 @@ public class TestCases
       ws.add(new Triangle(new Point(0,0), new Point(2,-4), new Point(3, 0), 
                  Color.BLACK));
 
-      assertEquals(114.2906063, ws.getAreaOfAllShapes(), DELTA);
+      assertEquals(117.5101508, ws.getAreaOfAllShapes(), DELTA);
    }
 
    @Test
