@@ -8,6 +8,13 @@ public class Triangle implements Shape {
     private Point vertexC;
     private Color color;
 
+    public Triangle(Point a, Point b, Point c, Color color) {
+        this.vertexA = a;
+        this.vertexB = b;
+        this.vertexC = c;
+        this.color = color;
+    }
+
     public Point getVertexA() {
         return vertexA;
     }

@@ -2,7 +2,7 @@ import java.awt.Color;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Workspace {
+public class WorkSpace {
 
     private List<Shape> shapes = new ArrayList<>();
 
@@ -22,7 +22,7 @@ public class Workspace {
         List<Circle> circles = new ArrayList<>();
         for ( Shape shape : shapes ) {
             if (shape instanceof Circle) {
-                circles.add(shape);
+                circles.add((Circle) shape);
             }
         }
         return circles;
@@ -32,7 +32,7 @@ public class Workspace {
         List<Rectangle> rectangles = new ArrayList<>();
         for ( Shape shape : shapes ) {
             if (shape instanceof Rectangle) {
-                rectangles.add(shape);
+                rectangles.add((Rectangle) shape);
             }
         }
         return rectangles;
@@ -42,7 +42,7 @@ public class Workspace {
         List<Triangle> triangles = new ArrayList<>();
         for ( Shape shape : shapes ) {
             if (shape instanceof Triangle) {
-                triangles.add(shape);
+                triangles.add((Triangle) shape);
             }
         }
         return triangles;
@@ -52,7 +52,7 @@ public class Workspace {
         List<ConvexPolygon> convexPolygons = new ArrayList<>();
         for ( Shape shape : shapes ) {
             if (shape instanceof ConvexPolygon) {
-                convexPolygons.add(shape);
+                convexPolygons.add((ConvexPolygon) shape);
             }
         }
         return convexPolygons;

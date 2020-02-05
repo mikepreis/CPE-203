@@ -9,7 +9,23 @@ public class ConvexPolygon implements Shape {
         return vertices[index];
     }
 
-    
+    public Color getColor() {
+        return color;
+    }
 
+    public void setColor(Color color) {
+        this.color = color;
+    }
 
+    public double getArea() {
+        return 0;
+    }
+
+    public double getPerimeter() {
+        return 0;
+    }
+
+    public void translate(Point p) {
+
+    }
 }

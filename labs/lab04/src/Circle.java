@@ -6,7 +6,7 @@ public class Circle implements Shape {
     private Point center;
     private Color color;
 
-    public Circle(double r,Color c, Point center) {
+    public Circle(double r, Point center, Color c) {
         this.radius = r;
         this.color = c;
         this.center = center;

@@ -7,7 +7,7 @@ public class Rectangle implements Shape{
     private Point topLeftCorner;
     private Color color;
 
-    public Rectangle(int h, int w, Point tlc, Color c) {
+    public Rectangle(double h, double w, Point tlc, Color c) {
         height = h;
         width = w;
         topLeftCorner = tlc;
@@ -30,7 +30,7 @@ public class Rectangle implements Shape{
         this.width = width;
     }
 
-    public Point getTopLeftCorner() {
+    public Point getTopLeft() {
         return this.topLeftCorner;
     }
 
