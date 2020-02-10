@@ -1,8 +1,8 @@
 package comparator;
-
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.fail;
+import java.time.Year;
 import java.util.Comparator;
 import java.util.Arrays;
 import java.util.List;
@@ -26,47 +26,62 @@ public class TestCases
    public void testArtistComparator()
    {
       ArtistComparator artistComparator = new ArtistComparator();
-      if ( artistComparator.compare(songs[5], songs[6]) < 0 ) {
-         System.out.println(songs[5].getArtist());
-      } else if ( artistComparator.compare(songs[5], songs[6]) > 0 ) {
-         System.out.println(songs[6].getArtist());
-      } else {
-         System.out.println("Artist is the same");
-      }
+
+      assertEquals(true, artistComparator.compare(songs[5], songs[6]) < 0);
+      assertEquals(false,  artistComparator.compare(songs[5], songs[6]) > 0);
+      assertEquals(true,  artistComparator.compare(songs[3], songs[2]) > 0);
    }
 
    @Test
    public void testLambdaTitleComparator()
    {
       Comparator<Song> titleComparator = (Song s1, Song s2) -> (s1.getTitle().compareTo(s2.getTitle()));
-      if ( titleComparator.compare(songs[5], songs[6]) < 0 ) {
-         System.out.println(songs[5].getTitle());
-      } else if ( titleComparator.compare(songs[5], songs[6]) > 0 ) {
-         System.out.println(songs[6].getTitle());
-      } else {
-         System.out.println("Title is the same");
-      }
+
+      assertEquals(true, titleComparator.compare(songs[5], songs[6]) < 0);
+      assertEquals(true, titleComparator.compare(songs[6], songs[4]) < 0);
+      assertEquals(true, titleComparator.compare(songs[1], songs[2]) < 0);
    }
+
+
+
 
    @Test
    public void testYearExtractorComparator()
    {
-      
+      Comparator<Song> yearComparator = Comparator.comparing(Song::getYear, (s1, s2) -> s2.compareTo(s1));
+      System.out.println(yearComparator.compare(songs[0], songs[2]));
+
    }
 
    @Test
    public void testComposedComparator()
    {
+      Comparator<Song> ac = Comparator.comparing(Song::getArtist);
+      Comparator<Song> yc = Comparator.comparing(Song::getYear);
+      ComposedComparator cc = new ComposedComparator(ac, yc);
+
+      assertEquals(true, cc.compare(songs[5], songs[7]) < 0);
+      assertEquals(false, cc.compare(songs[5], songs[7]) > 0);
+      assertEquals(true, cc.compare(songs[2], songs[5]) < 0);
+
+
+
    }
 
    @Test
    public void testThenComparing()
    {
+      Comparator<Song> cc = Comparator.comparing(Song::getArtist).thenComparing(Song::getYear);
+
+      assertEquals(true, cc.compare(songs[5], songs[7]) < 0);
    }
 
    @Test
    public void runSort()
    {
+      Comparator<Song> comparator = Comparator.comparing(Song::getArtist).thenComparing(Song::getTitle).thenComparing(Song::getYear);
+
+
       List<Song> songList = new ArrayList<>(Arrays.asList(songs));
       List<Song> expectedList = Arrays.asList(
          new Song("Avett Brothers", "Talk on Indolence", 2006),
@@ -79,9 +94,9 @@ public class TestCases
          new Song("Rogue Wave", "Love's Lost Guarantee", 2005)
          );
 
-      //songList.sort(
-         // pass comparator here
-      //);
+      songList.sort(
+          comparator
+      );
 
       assertEquals(songList, expectedList);
    }
