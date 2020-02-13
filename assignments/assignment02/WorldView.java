@@ -18,10 +18,9 @@ final class WorldView
       this.tileHeight = tileHeight;
       this.viewport = new Viewport(numRows, numCols);
    }
-
    public void drawEntities()
    {
-      for (EntityInterface entity : this.world.getEntities())
+      for (Entity entity : this.world.getEntities())
       {
          Point pos = entity.getPosition();
 
@@ -33,7 +32,6 @@ final class WorldView
          }
       }
    }
-
    public void drawBackground()
    {
       for (int row = 0; row < this.viewport.getNumRows(); row++)
@@ -50,7 +48,6 @@ final class WorldView
          }
       }
    }
-
    public void shiftView( int colDelta, int rowDelta)
    {
       int newCol = clamp(this.viewport.getCol() + colDelta, 0,
@@ -60,16 +57,13 @@ final class WorldView
 
       this.viewport.shift(newCol, newRow);
    }
-
    public void drawViewport()
    {
       drawBackground();
       drawEntities();
    }
-
    public int clamp(int value, int low, int high)
    {
       return Math.min(high, Math.max(value, low));
    }
-
 }

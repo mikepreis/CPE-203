@@ -109,7 +109,7 @@ public final class VirtualWorld extends PApplet
       loadImages(IMAGE_LIST_FILE_NAME, imageStore, this);
       loadWorld(world, LOAD_FILE_NAME, imageStore);
 
-      scheduleActions(world, scheduler, imageStore);
+      world.scheduleActions(scheduler, imageStore);
 
       next_time = System.currentTimeMillis() + TIMER_ACTION_PERIOD;
    }
@@ -198,13 +198,7 @@ public final class VirtualWorld extends PApplet
       }
    }
 
-   public void scheduleActions(WorldModel world, EventScheduler scheduler, ImageStore imageStore)
-   {
-      for (EntityInterface entity : world.getEntities())
-      {
-         entity.scheduleActions( scheduler, world, imageStore);
-      }
-   }
+
 
    public static void parseCommandLine(String [] args)
    {
@@ -233,7 +227,7 @@ public final class VirtualWorld extends PApplet
       {
          Point pt = new Point(Integer.parseInt(properties[ORE_COL]),
                  Integer.parseInt(properties[ORE_ROW]));
-         Ore entity = Ore.createOre(properties[ORE_ID],
+         Entity entity = Ore.createOre(properties[ORE_ID],
                  pt, Integer.parseInt(properties[ORE_ACTION_PERIOD]),
                  imageStore.getImageList(ORE_KEY));
          world.tryAddEntity( entity);
@@ -248,7 +242,7 @@ public final class VirtualWorld extends PApplet
       {
          Point pt = new Point(Integer.parseInt(properties[VEIN_COL]),
                  Integer.parseInt(properties[VEIN_ROW]));
-         Vein entity = Vein.createVein(properties[VEIN_ID],
+         Entity entity = Vein.createVein(properties[VEIN_ID],
                  pt,
                  Integer.parseInt(properties[VEIN_ACTION_PERIOD]),
                  imageStore.getImageList( VEIN_KEY));
@@ -264,30 +258,26 @@ public final class VirtualWorld extends PApplet
       {
          Point pt = new Point(Integer.parseInt(properties[SMITH_COL]),
                  Integer.parseInt(properties[SMITH_ROW]));
-         Blacksmith entity = Blacksmith.createBlacksmith(properties[SMITH_ID],
-                 pt, imageStore.getImageList( SMITH_KEY));
-         world.tryAddEntity( entity);
+         Blacksmith entity = new Blacksmith(properties[SMITH_ID], pt, imageStore.getImageList(SMITH_KEY), 0, 0, 0, 0);
+         world.tryAddEntity(entity);
       }
 
       return properties.length == SMITH_NUM_PROPERTIES;
    }
 
    public static boolean parseMiner(String [] properties, WorldModel world,
-                                    ImageStore imageStore)
-   {
-      if (properties.length == MINER_NUM_PROPERTIES)
-      {
+                                    ImageStore imageStore) {
+      if (properties.length == MINER_NUM_PROPERTIES) {
          Point pt = new Point(Integer.parseInt(properties[MINER_COL]),
                  Integer.parseInt(properties[MINER_ROW]));
-         Miner_Not_Full entity = Miner_Not_Full.createMinerNotFull(properties[MINER_ID],
+         Entity entity = Miner_Not_Full.createMinerNotFull(properties[MINER_ID],
                  Integer.parseInt(properties[MINER_LIMIT]),
                  pt,
                  Integer.parseInt(properties[MINER_ACTION_PERIOD]),
                  Integer.parseInt(properties[MINER_ANIMATION_PERIOD]),
                  imageStore.getImageList(MINER_KEY));
-         world.tryAddEntity( entity);
+         world.tryAddEntity(entity);
       }
-
       return properties.length == MINER_NUM_PROPERTIES;
    }
 
@@ -296,7 +286,7 @@ public final class VirtualWorld extends PApplet
       if (properties.length == OBSTACLE_NUM_PROPERTIES)
       {
          Point pt = new Point(Integer.parseInt(properties[OBSTACLE_COL]), Integer.parseInt(properties[OBSTACLE_ROW]));
-         Obstacle entity = Obstacle.createObstacle(properties[OBSTACLE_ID], pt, imageStore.getImageList( OBSTACLE_KEY));
+         Obstacle entity = new Obstacle(properties[OBSTACLE_ID], pt, imageStore.getImageList( OBSTACLE_KEY), 0, 0, 0, 0);
          world.tryAddEntity(entity);
       }
 

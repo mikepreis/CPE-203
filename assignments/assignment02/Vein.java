@@ -1,19 +1,26 @@
 import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
+import java.util.Random;
 
-public class Vein implements EntityInterface {
+public class Vein extends Activity implements EntityInterface {
 
-    private String id;
-    private Point position;
-    private List<PImage> images;
-    private int imageIndex;
-    private int resourceLimit;
-    private int resourceCount;
-    private int actionPeriod;
-    private int animationPeriod;
+    public String id;
+    public Point position;
+    public List<PImage> images;
+    public int imageIndex;
+    public int resourceLimit;
+    public int resourceCount;
+    public int actionPeriod;
+    public int animationPeriod;
+    public static final Random rand = new Random();
 
-    public Vein(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
+    private WorldModel world;
+    private ImageStore imageStore;
+    private int repeatCount;
+
+    public Vein(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod, WorldModel world, ImageStore imageStore, int repeatCount) {
+
         this.id = id;
         this.position = position;
         this.images = images;
@@ -22,40 +29,48 @@ public class Vein implements EntityInterface {
         this.resourceCount = resourceCount;
         this.actionPeriod = actionPeriod;
         this.animationPeriod = animationPeriod;
+
+        this.world = world;
+        this.imageStore = imageStore;
+        this.repeatCount = repeatCount;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public Point getPosition() {
         return position;
     }
 
-    public void setPosition(Point position) {
-        this.position = position;
-    }
-
+    @Override
     public List<PImage> getImages() {
         return images;
     }
 
+    @Override
     public int getImageIndex() {
         return imageIndex;
     }
 
+    @Override
     public int getResourceLimit() {
         return resourceLimit;
     }
 
+    @Override
     public int getResourceCount() {
         return resourceCount;
     }
 
+    @Override
     public int getActionPeriod() {
         return actionPeriod;
     }
 
+    @Override
     public int getAnimationPeriod() {
         return animationPeriod;
     }
@@ -65,27 +80,40 @@ public class Vein implements EntityInterface {
         this.imageIndex = (this.imageIndex + 1) % this.images.size();
     }
 
-    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
-        scheduler.scheduleEvent(this, ActivityClass.createActivityAction(this, world, imageStore), this.actionPeriod);
+    @Override
+    public void executeAction(EventScheduler scheduler) {
+        executeActivityAction(scheduler);
     }
 
-    public static Vein createVein(String id, Point position, int actionPeriod, List<PImage> images)
+    @Override
+    public void executeActivityAction(EventScheduler scheduler) {
+        executeVeinActivity(this.world, this.imageStore, scheduler);
+    }
+
+    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
+        scheduler.scheduleEvent(this, createActivityAction( world, imageStore), this.getActionPeriod());
+    }
+
+    public static Entity createVein(String id, Point position, int actionPeriod, List<PImage> images)
     {
-        return new Vein(id, position, images, 0, 0, actionPeriod, 0);
+        return new Entity(id, position, images, 0, 0, actionPeriod, 0);
     }
 
     public void executeVeinActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler)
     {
-        Optional<Point> openPt = world.findOpenAround(this.position);
+        Optional<Point> openPt = world.findOpenAround(this.getPosition());
 
         if (openPt.isPresent())
         {
-            Ore ore = Ore.createOre(VirtualWorld.ORE_ID_PREFIX + this.id, openPt.get(), VirtualWorld.ORE_CORRUPT_MIN + VirtualWorld.rand.nextInt(VirtualWorld.ORE_CORRUPT_MAX - VirtualWorld.ORE_CORRUPT_MIN), imageStore.getImageList( VirtualWorld.ORE_KEY));
-            world.addEntity(ore);
+            Entity ore = Ore.createOre(Ore.ORE_ID_PREFIX + this.getId(),
+                    openPt.get(), Ore.ORE_CORRUPT_MIN +
+                            rand.nextInt(Ore.ORE_CORRUPT_MAX - Ore.ORE_CORRUPT_MIN),
+                    imageStore.getImageList( Ore.ORE_KEY));
+            world.addEntity( ore);
             scheduleActions( scheduler, world, imageStore);
         }
 
-        scheduler.scheduleEvent( this, ActivityClass.createActivityAction(this, world, imageStore), this.actionPeriod);
+        scheduler.scheduleEvent( this, this.createActivityAction(world, imageStore), this.getActionPeriod());
     }
 
 }

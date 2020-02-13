@@ -1,7 +1,8 @@
 import processing.core.PImage;
 import java.util.List;
+import java.util.Random;
 
-public class Blacksmith implements EntityInterface{
+public class Blacksmith implements EntityInterface {
 
     private String id;
     private Point position;
@@ -11,7 +12,7 @@ public class Blacksmith implements EntityInterface{
     private int resourceCount;
     private int actionPeriod;
     private int animationPeriod;
-
+    private static final Random rand = new Random();
 
     public Blacksmith(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
         this.id = id;
@@ -24,38 +25,42 @@ public class Blacksmith implements EntityInterface{
         this.animationPeriod = animationPeriod;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public Point getPosition() {
         return position;
     }
 
-    public void setPosition(Point position) {
-        this.position = position;
-    }
-
+    @Override
     public List<PImage> getImages() {
         return images;
     }
 
+    @Override
     public int getImageIndex() {
         return imageIndex;
     }
 
+    @Override
     public int getResourceLimit() {
         return resourceLimit;
     }
 
+    @Override
     public int getResourceCount() {
         return resourceCount;
     }
 
+    @Override
     public int getActionPeriod() {
         return actionPeriod;
     }
 
+    @Override
     public int getAnimationPeriod() {
         return animationPeriod;
     }
@@ -63,10 +68,5 @@ public class Blacksmith implements EntityInterface{
     public void nextImage()
     {
         this.imageIndex = (this.imageIndex + 1) % this.images.size();
-    }
-
-    public static Blacksmith createBlacksmith(String id, Point position, List<PImage> images)
-    {
-        return new Blacksmith(id, position, images, 0, 0, 0, 0);
     }
 }

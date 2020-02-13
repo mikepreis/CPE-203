@@ -403,9 +403,7 @@ final class Entity
             break;
 
          case MINER_NOT_FULL:
-            scheduler.scheduleEvent(this,
-                    this.createActivityAction(world, imageStore),
-                    this.actionPeriod);
+            scheduler.scheduleEvent(this, this.createActivityAction(world, imageStore), this.actionPeriod);
             scheduler.scheduleEvent(this, this.createAnimationAction(0), getAnimationPeriod());
             break;
 
@@ -514,8 +512,7 @@ final class Entity
       return properties.length == SMITH_NUM_PROPERTIES;
    }
 
-   public static boolean parseMiner(String [] properties, WorldModel world,
-                                    ImageStore imageStore)
+   public static boolean parseMiner(String [] properties, WorldModel world, ImageStore imageStore)
    {
       if (properties.length == MINER_NUM_PROPERTIES)
       {

@@ -28,7 +28,7 @@ final class EventScheduler
       this.pendingEvents.put(entity, pending);
    }
 
-   public void unscheduleAllEvents(EntityInterface entity)
+   public void unscheduleAllEvents(Entity entity)
    {
       List<Event> pending = this.pendingEvents.remove(entity);
 

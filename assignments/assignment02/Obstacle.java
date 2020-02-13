@@ -1,18 +1,18 @@
 import processing.core.PImage;
 import java.util.List;
+import java.util.Random;
 
-public class Obstacle {
+public class Obstacle implements EntityInterface {
 
-    private String id;
-    private Point position;
-    private List<PImage> images;
-    private int imageIndex;
-    private int resourceLimit;
-    private int resourceCount;
-    private int actionPeriod;
-    private int animationPeriod;
-
-
+    public String id;
+    public Point position;
+    public List<PImage> images;
+    public int imageIndex;
+    public int resourceLimit;
+    public int resourceCount;
+    public int actionPeriod;
+    public int animationPeriod;
+    public static final Random rand = new Random();
 
     public Obstacle(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
         this.id = id;
@@ -25,38 +25,42 @@ public class Obstacle {
         this.animationPeriod = animationPeriod;
     }
 
+    @Override
     public String getId() {
         return id;
     }
 
+    @Override
     public Point getPosition() {
         return position;
     }
 
-    public void setPosition(Point position) {
-        this.position = position;
-    }
-
+    @Override
     public List<PImage> getImages() {
         return images;
     }
 
+    @Override
     public int getImageIndex() {
         return imageIndex;
     }
 
+    @Override
     public int getResourceLimit() {
         return resourceLimit;
     }
 
+    @Override
     public int getResourceCount() {
         return resourceCount;
     }
 
+    @Override
     public int getActionPeriod() {
         return actionPeriod;
     }
 
+    @Override
     public int getAnimationPeriod() {
         return animationPeriod;
     }
@@ -65,10 +69,4 @@ public class Obstacle {
     {
         this.imageIndex = (this.imageIndex + 1) % this.images.size();
     }
-
-    public static Obstacle createObstacle(String id, Point position, List<PImage> images)
-    {
-        return new Obstacle(id, position, images, 0, 0, 0, 0);
-    }
-
 }
