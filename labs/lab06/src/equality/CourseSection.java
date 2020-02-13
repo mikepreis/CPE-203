@@ -20,5 +20,37 @@ class CourseSection
       this.endTime = endTime;
    }
 
+   public boolean equals( Object o ) {
+      if ( o == null ) {
+         return false;
+      }
+      if ( ! ( o instanceof CourseSection ) ) {
+         return false;
+      }
+
+      CourseSection otherCourseSection = ( CourseSection ) o;
+
+      if ( ! (this.prefix.equals(otherCourseSection.prefix) ) ) {
+         return false;
+      }
+      if ( ! (this.number.equals(otherCourseSection.number) ) ) {
+         return false;
+      }
+      if ( ! (this.enrollment == otherCourseSection.enrollment ) ) {
+         return false;
+      }
+      if ( ! (this.startTime.equals(otherCourseSection.startTime) ) ) {
+         return false;
+      }
+      if ( ! (this.endTime.equals(otherCourseSection.endTime) ) ) {
+         return false;
+      }
+      return true;
+   }
+
+   public int hashCode() {
+      return (int) prefix.hashCode() * number.hashCode() * enrollment * startTime.hashCode() + endTime.hashCode();
+   }
+
    // additional likely methods not defined since they are not needed for testing
 }

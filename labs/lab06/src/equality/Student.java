@@ -1,6 +1,7 @@
 package equality;
 
 import java.util.List;
+import java.util.Objects;
 
 class Student
 {
@@ -16,5 +17,15 @@ class Student
       this.givenName = givenName;
       this.age = age;
       this.currentCourses = currentCourses;
+   }
+
+   @Override
+   public int hashCode() {
+      return super.hashCode();
+   }
+
+   @Override
+   public boolean equals(Object obj) {
+      return super.equals(obj);
    }
 }

@@ -149,16 +149,16 @@ class Parser
       switch (tkcode)
       {
          case Constants.TK_PLUS:
-            e = new AddExpression(lft, rht);
+            e = new AddExpression(lft, rht, "+");
             break;
          case Constants.TK_MINUS:
-            e = new SubtractExpression(lft, rht);
+            e = new SubtractExpression(lft, rht, "-");
             break;
          case Constants.TK_TIMES:
-            e = new MultiplyExpression(lft, rht);
+            e = new MultiplyExpression(lft, rht, "*");
             break;
          case Constants.TK_DIVIDE:
-            e = new DivideExpression(lft, rht);
+            e = new DivideExpression(lft, rht, "/");
             break;
       }
       return e;
