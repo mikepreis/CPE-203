@@ -19,13 +19,36 @@ class Student
       this.currentCourses = currentCourses;
    }
 
-   @Override
-   public int hashCode() {
-      return super.hashCode();
+
+   public int hashCode(Objects o) {
+      return o.hashCode();
    }
 
    @Override
-   public boolean equals(Object obj) {
-      return super.equals(obj);
+   public boolean equals(Object o) {
+      if ( o == null ) {
+         return false;
+      }
+      if ( ! ( o instanceof Student ) ) {
+         return false;
+      }
+
+      Student other = ( Student ) o;
+
+      if ( ! (this.surname.equals(other.surname) ) ) {
+         return false;
+      }
+      if ( ! (this.givenName.equals(other.givenName) ) ) {
+         return false;
+      }
+      if ( ! (this.age == other.age ) ) {
+         return false;
+      }
+      if ( ! (this.currentCourses.equals(other.currentCourses) ) ) {
+         return false;
+      }
+
+      return true;
    }
+
 }

@@ -10,7 +10,7 @@ class DivideExpression extends BinaryExpression
 
    @Override
    protected double _applyOperator(double leftExpression, double rightExpression) {
-      return rightExpression +leftExpression;
+      return leftExpression / rightExpression;
    }
 
 }

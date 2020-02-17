@@ -46,10 +46,11 @@ class CourseSection
          return false;
       }
       return true;
+
    }
 
    public int hashCode() {
-      return (int) prefix.hashCode() * number.hashCode() * enrollment * startTime.hashCode() + endTime.hashCode();
+      return (int) prefix.hashCode() + number.hashCode() + enrollment + startTime.hashCode() + endTime.hashCode();
    }
 
    // additional likely methods not defined since they are not needed for testing
