@@ -51,11 +51,11 @@ final class WorldModel
       else
       {
          Entity nearest = entities.get(0);
-         int nearestDistance = nearest.getPosition().distanceSquared(pos);
+         int nearestDistance = distanceSquared(nearest.getPosition(), pos);
 
          for (Entity other : entities)
          {
-            int otherDistance = other.getPosition().distanceSquared(pos);
+            int otherDistance = distanceSquared(other.getPosition(), pos);
 
             if (otherDistance < nearestDistance)
             {
@@ -206,21 +206,12 @@ final class WorldModel
       this.background[pos.getY()][pos.getX()] = background;
    }
 
-   public static PImage getCurrentImage(Object entity)
+   public static int distanceSquared(Point p1, Point p2)
    {
-      if (entity instanceof Background)
-      {
-         return ((Background)entity).getImages()
-                 .get(((Background)entity).getImageIndex());
-      }
-      else if (entity instanceof Entity)
-      {
-         return ((Entity)entity).getImages().get(((Entity)entity).getImageIndex());
-      }
-      else
-      {
-         throw new UnsupportedOperationException(String.format("getCurrentImage not supported for %s", entity));
-      }
+      int deltaX = p1.getX() - p2.getX();
+      int deltaY = p1.getY() - p2.getY();
+
+      return deltaX * deltaX + deltaY * deltaY;
    }
 
    public int getnumRows() {

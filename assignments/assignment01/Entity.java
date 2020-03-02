@@ -1,7 +1,6 @@
 import java.util.List;
 import java.util.Optional;
 import java.util.Random;
-
 import processing.core.PImage;
 
 final class Entity
@@ -97,14 +96,15 @@ final class Entity
       return this.imageIndex;
    }
 
-   public Action createAnimationAction(int repeatCount)
+   public static Action createAnimationAction(Entity entity, int repeatCount)
    {
-      return new Action(ActionKind.ANIMATION, this, null, null, repeatCount);
+      return new Action(ActionKind.ANIMATION, entity, null, null, repeatCount);
    }
 
-   public Action createActivityAction(WorldModel world, ImageStore imageStore)
+   public static Action createActivityAction(Entity entity, WorldModel world,
+                                             ImageStore imageStore)
    {
-      return new Action(ActionKind.ACTIVITY, this, world, imageStore, 0);
+      return new Action(ActionKind.ACTIVITY, entity, world, imageStore, 0);
    }
 
    public void executeMinerFullActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler)
@@ -558,28 +558,4 @@ final class Entity
       return properties.length == BGND_NUM_PROPERTIES;
    }
 
-   public static boolean processLine(String line, WorldModel world, ImageStore imageStore)
-   {
-      String[] properties = line.split("\\s");
-      if (properties.length > 0)
-      {
-         switch (properties[PROPERTY_KEY])
-         {
-            case BGND_KEY:
-               return parseBackground(properties, world, imageStore);
-            case MINER_KEY:
-               return parseMiner(properties, world, imageStore);
-            case OBSTACLE_KEY:
-               return parseObstacle(properties, world, imageStore);
-            case Entity.ORE_KEY:
-               return Entity.parseOre(properties, world, imageStore);
-            case SMITH_KEY:
-               return parseSmith(properties, world, imageStore);
-            case VEIN_KEY:
-               return parseVein(properties, world, imageStore);
-         }
-      }
-
-      return false;
-   }
 }

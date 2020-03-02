@@ -1,7 +1,7 @@
 import processing.core.PImage;
 import java.util.List;
 
-public class Quake extends Entity implements ActivityInterface, AnimationInterface{
+public class Quake extends Entity implements AnimationInterface{
 
     private static final int QUAKE_ACTION_PERIOD = 1100;
     private static final int QUAKE_ANIMATION_PERIOD = 100;

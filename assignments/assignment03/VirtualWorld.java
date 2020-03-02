@@ -33,6 +33,15 @@ public final class VirtualWorld extends PApplet
    private EventScheduler scheduler;
    private long next_time;
 
+   public static final String BGND_KEY = "background";
+   private static final int PROPERTY_KEY = 0;
+
+   public static final String ORE_KEY = "ore";
+   public static final String VEIN_KEY = "vein";
+   public static final String SMITH_KEY = "blacksmith";
+   public static final String OBSTACLE_KEY = "obstacle";
+   public static final String MINER_KEY = "miner";
+
    public void settings()
    {
       size(VIEW_WIDTH, VIEW_HEIGHT);
@@ -140,6 +149,31 @@ public final class VirtualWorld extends PApplet
       }
    }
 
+   public static boolean processLine(String line, WorldModel world, ImageStore imageStore)
+   {
+      String[] properties = line.split("\\s");
+      if (properties.length > 0)
+      {
+         switch (properties[PROPERTY_KEY])
+         {
+            case BGND_KEY:
+               return Background.parseBackground(properties, world, imageStore);
+            case MINER_KEY:
+               return MinerNotFull.parseMiner(properties, world, imageStore);
+            case OBSTACLE_KEY:
+               return Obstacle.parseObstacle(properties, world, imageStore);
+            case ORE_KEY:
+               return Ore.parseOre(properties, world, imageStore);
+            case SMITH_KEY:
+               return Blacksmith.parseSmith(properties, world, imageStore);
+            case VEIN_KEY:
+               return Vein.parseVein(properties, world, imageStore);
+         }
+      }
+
+      return false;
+   }
+
    public void scheduleActions(WorldModel world,
       EventScheduler scheduler, ImageStore imageStore)
    {
@@ -167,6 +201,24 @@ public final class VirtualWorld extends PApplet
                break;
          }
       }
+   }
+
+   public static boolean parseMiner(String [] properties, WorldModel world, ImageStore imageStore)
+   {
+      if (properties.length == MINER_NUM_PROPERTIES)
+      {
+         Point pt = new Point(Integer.parseInt(properties[MINER_COL]),
+                 Integer.parseInt(properties[MINER_ROW]));
+         Entity entity = MinerNotFull.createMinerNotFull(properties[MINER_ID],
+                 Integer.parseInt(properties[MINER_LIMIT]),
+                 pt,
+                 Integer.parseInt(properties[MINER_ACTION_PERIOD]),
+                 Integer.parseInt(properties[MINER_ANIMATION_PERIOD]),
+                 imageStore.getImageList(MINER_KEY));
+         world.tryAddEntity( entity);
+      }
+
+      return properties.length == MINER_NUM_PROPERTIES;
    }
 
    public static void main(String [] args)

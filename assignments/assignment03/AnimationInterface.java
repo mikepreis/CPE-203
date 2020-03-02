@@ -1,4 +1,5 @@
-public interface AnimationInterface extends ActionInterface {
-    Action createAnimationAction(int repeatCount);
+public interface AnimationInterface extends ActivityInterface {
     void executeAnimationAction(EventScheduler scheduler);
+    int getAnimationPeriod();
+
 }

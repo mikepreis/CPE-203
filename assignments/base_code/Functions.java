@@ -370,7 +370,7 @@ final class Functions
       return false;
    }
 
-   public static void transformFull(Entity entity, WorldModel world,
+   public static vformFull(Entity entity, WorldModel world,
       EventScheduler scheduler, ImageStore imageStore)
    {
       Entity miner = createMinerNotFull(entity.id, entity.resourceLimit,

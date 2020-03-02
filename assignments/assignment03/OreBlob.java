@@ -3,7 +3,7 @@ import processing.core.PImage;
 import java.util.List;
 import java.util.Optional;
 
-public class OreBlob extends Entity implements ActivityInterface, AnimationInterface {
+public class OreBlob extends Entity implements AnimationInterface {
 
     public WorldModel world;
     public ImageStore imageStore;

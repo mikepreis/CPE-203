@@ -1,24 +1,25 @@
 import processing.core.PImage;
-
 import java.util.List;
 import java.util.Optional;
 
-public class MinerFull extends Entity implements ActivityInterface, AnimationInterface {
+public class MinerFull extends Entity implements ActivityInterface, AnimationInterface  {
 
     public WorldModel world;
     public ImageStore imageStore;
     public int repeatCount;
+    private int animationPeriod;
+    private int actionPeriod;
 
-
-    public MinerFull(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod) {
+    public MinerFull(String id, Point position, List<PImage> images, int resourceLimit, int resourceCount, int actionPeriod, int animationPeriod ) {
         super(id, position, images, resourceLimit, resourceCount, actionPeriod, animationPeriod);
-
     }
 
+    public int getAnimationPeriod() {
+        return animationPeriod;
+    }
 
-    public static MinerFull createMinerFull(String id, int resourceLimit, Point position, int actionPeriod, int animationPeriod, List<PImage> images)
-    {
-        return new MinerFull(id, position, images, resourceLimit, resourceLimit, actionPeriod, animationPeriod);
+    public int getActionPeriod() {
+        return actionPeriod;
     }
 
     public Point nextPositionMiner(WorldModel world, Point destPos)
@@ -42,17 +43,15 @@ public class MinerFull extends Entity implements ActivityInterface, AnimationInt
         return newPos;
     }
 
-    public void transformFull(WorldModel world, EventScheduler scheduler, ImageStore imageStore)
+    public void transformFull(MinerNotFull entity, WorldModel world, EventScheduler scheduler, ImageStore imageStore)
     {
-        Entity miner = MinerNotFull.createMinerNotFull(this.getId(), this.getResourceLimit(),
-                this.getPosition(), this.getActionPeriod(), this.getAnimationPeriod(),
-                this.getImages());
+        MinerNotFull miner = new MinerNotFull(entity.getId(), entity.getPosition(), entity.getImages(), entity.getResourceLimit(), 0, entity.getActionPeriod(), entity.getAnimationPeriod());
 
-        world.removeEntity( this);
-        scheduler.unscheduleAllEvents( this);
+        world.removeEntity(entity);
+        scheduler.unscheduleAllEvents(entity);
 
-        world.addEntity( miner);
-        scheduleActions( scheduler, world, imageStore);
+        world.addEntity(miner);
+        scheduleActions(miner, scheduler, world, imageStore);
     }
 
 
@@ -80,61 +79,45 @@ public class MinerFull extends Entity implements ActivityInterface, AnimationInt
         }
     }
 
-    public void scheduleActions(EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
-        scheduler.scheduleEvent(this, this.createActivityAction(world, imageStore), this.getActionPeriod());
-        scheduler.scheduleEvent(this, this.createAnimationAction(0), getAnimationPeriod());
+    public void scheduleActions(Entity entity, EventScheduler scheduler, WorldModel world, ImageStore imageStore) {
+        scheduler.scheduleEvent(entity, Action.createActivityAction( this, world, imageStore), this.getActionPeriod());
+        scheduler.scheduleEvent(entity, Action.createAnimationAction( this, 0), this.getAnimationPeriod());
     }
 
     //    Activity Interface Implementation
 
-    @Override
     public void executeAction(EventScheduler scheduler) {
         executeActivityAction(scheduler);
+        executeAnimationAction(scheduler);
     }
 
-    @Override
     public void executeActivityAction(EventScheduler scheduler) {
-        executeMinerFullActivity(this.world, this.imageStore, scheduler);
+        executeMinerFullActivity(this, this.world, this.imageStore, scheduler);
     }
 
-
-    public Action createActivityAction(WorldModel world, ImageStore imageStore)
+    public void executeMinerFullActivity(MinerNotFull entity, WorldModel world, ImageStore imageStore, EventScheduler scheduler)
     {
-        return new Action( this, world, imageStore, 0);
-    }
-
-    public void executeMinerFullActivity(WorldModel world, ImageStore imageStore, EventScheduler scheduler)
-    {
-        Optional<Entity> fullTarget = world.findNearest(this.getPosition(), Blacksmith.class);
+        Optional<Entity> fullTarget = world.findNearest( entity.getPosition(), Blacksmith.class);
 
         if (fullTarget.isPresent() &&
                 this.moveToFull( world, fullTarget.get(), scheduler))
         {
-            transformFull(world, scheduler, imageStore);
+            transformFull(entity, world, scheduler, imageStore);
         }
         else
         {
-            scheduler.scheduleEvent(this, this.createActivityAction(world, imageStore), this.getActionPeriod());
+            scheduler.scheduleEvent( entity, Action.createActivityAction(entity, world, imageStore), entity.getActionPeriod());
         }
     }
-
 
 
     public void executeAnimationAction(EventScheduler scheduler)
     {
-        this.nextImage();
+        nextImage();
 
-        if (this.repeatCount != 1)
+        if (repeatCount != 1)
         {
-            scheduler.scheduleEvent( this, this.createAnimationAction(Math.max(this.repeatCount - 1, 0)), this.getAnimationPeriod());
+            scheduler.scheduleEvent(this, Action.createAnimationAction(this, Math.max(repeatCount - 1, 0)), this.getAnimationPeriod());
         }
     }
-
-    public Action createAnimationAction(int repeatCount)
-    {
-        return new Action( this, null, null, repeatCount);
-    }
-
-
-
 }

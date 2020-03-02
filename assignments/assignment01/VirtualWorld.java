@@ -168,6 +168,32 @@ public final class VirtualWorld extends PApplet
       }
    }
 
+
+   public static boolean processLine(String line, WorldModel world, ImageStore imageStore)
+   {
+      String[] properties = line.split("\\s");
+      if (properties.length > 0)
+      {
+         switch (properties[PROPERTY_KEY])
+         {
+            case BGND_KEY:
+               return parseBackground(properties, world, imageStore);
+            case MINER_KEY:
+               return parseMiner(properties, world, imageStore);
+            case OBSTACLE_KEY:
+               return parseObstacle(properties, world, imageStore);
+            case Entity.ORE_KEY:
+               return Entity.parseOre(properties, world, imageStore);
+            case SMITH_KEY:
+               return parseSmith(properties, world, imageStore);
+            case VEIN_KEY:
+               return parseVein(properties, world, imageStore);
+         }
+      }
+
+      return false;
+   }
+
    public static void main(String [] args)
    {
       parseCommandLine(args);

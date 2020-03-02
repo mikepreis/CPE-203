@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5c9ea88e-f913-420f-9a11-0008dd2e047d" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part1/src/BetterLoop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part1/src/Course.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part1/src/ExampleMap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part1/src/SimpleArray.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part1/src/SimpleIf.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part1/src/SimpleList.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part1/src/SimpleLoop.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part1/src/TestCases.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part2/src/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab01/part2/src/TestCases.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab05/src/comparator/ArtistComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab05/src/comparator/ComposedComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab05/src/comparator/TitleComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab05/src/comparator/YearComparator.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab06/src/calculator/BinaryExpression.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/labs/lab08/src/Point.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/midterm/src/Midterm.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/midterm/src/Student.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignments/assignment03/AnimationInterface.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignments/assignment03/AnimationInterface.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignments/assignment03/MinerFull.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignments/assignment03/MinerFull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignments/assignment03/MinerNotFull.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignments/assignment03/MinerNotFull.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignments/assignment03/OreBlob.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignments/assignment03/OreBlob.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignments/assignment03/Quake.java" beforeDir="false" afterPath="$PROJECT_DIR$/assignments/assignment03/Quake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/assignments/assignment03/text.java" beforeDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="1YXcEyJWIpAhnNPvBXofB6M28Zh" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="PropertiesComponent">
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5c9ea88e-f913-420f-9a11-0008dd2e047d" name="Default Changelist" comment="" />
+      <created>1583092271540</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1583092271540</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+</project>
