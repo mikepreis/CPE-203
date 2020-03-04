@@ -43,7 +43,7 @@ edition and alternate textbooks covering java 8 are acceptable.
     20. if Statements\
     21. Comparing integers, floats and strings\
     22. Boolean data type\
-    23. Validating user input\
+    23. Validating user input
 
 - Loops\
     24. While loops and for loops\
@@ -72,14 +72,14 @@ edition and alternate textbooks covering java 8 are acceptable.
     43. Decoupling classes\
     44. Helper and inner classes
 - Stream Processing\
-    o Lambda Expressions\
+    45. Lambda Expressions\
 - Exception Handling\
-    45. Read/Write text files\
-    46. Process command line arguments\
-    47. Exceptions\
-    48. Propagation of Exceptions
+    46. Read/Write text files\
+    47. Process command line arguments\
+    48. Exceptions\
+    49. Propagation of Exceptions
 - Object-oriented Design\
-    49. Class and method discovery\
-    50. Identifying inheritance, aggregation, and dependency\
-    51. UML class diagrams\
-    52. Complex programs using OO techniques
+    50. Class and method discovery\
+    51. Identifying inheritance, aggregation, and dependency\
+    52. UML class diagrams\
+    53. Complex programs using OO techniques
