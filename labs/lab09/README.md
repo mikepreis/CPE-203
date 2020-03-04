@@ -52,6 +52,7 @@ should only get printed if the Circle constructor is successful. Why? Change the
 your Circle constructor such that you try it with a valid radius, a zero radius, and a negative
 radius. When does the Circle get printed? When does the "In finally" get printed? When does the
 "Done" get printed?
+'''java
 10.
 11. public class CircleTest
 12. {
@@ -71,6 +72,7 @@ radius. When does the Circle get printed? When does the "In finally" get printed
 26. System.out.println("Done.");
 27. }
 28. }
+'''
 29. Then change your catch block so you specifically catch NegativeRadiusExceptions and
 ZeroRadiusExceptions. In the NegativeRadiusException code, additionally print out the radius.
 System.out.println(e.getMessage() + ": " + e.radius());
