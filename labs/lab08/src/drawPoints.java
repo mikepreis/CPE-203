@@ -1,6 +1,7 @@
 import processing.core.*;
-
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class drawPoints extends PApplet {
 
@@ -17,22 +18,15 @@ public class drawPoints extends PApplet {
 
    	double x, y;
    
-   	String[] lines = loadStrings("test.txt");
+   	String[] lines = loadStrings("positions.txt");
    	println("there are " + lines.length);
-  		for (int i=0; i < lines.length; i++){
-      	if (lines[i].length() > 0 ) {
-        		String[] words= lines[i].split(",");
-        		x = Double.parseDouble(words[0]);
-        		y = Double.parseDouble(words[1]);
-        		//println("xy: " + x + " " + y);
-        		ellipse((int)x, (int)y, 1, 1);
-      	}
-  		}
+	List<Point> points = Stream.of(lines).map(s -> s.split(", ")).map(s -> new Point(Double.parseDouble(s[0]), Double.parseDouble(s[1]), Double.parseDouble(s[2]))).filter(point -> point.getZ() <= 2.0).map(point -> point.scale(0.5)).map(point -> point.translate(-150, -37)).collect(Collectors.toList());
+	for (Point p : points) {
+		ellipse((int) p.getX(), (int) p.getY(), 1, 1);
+	}
   	}
 
   	public static void main(String args[]) {
       PApplet.main("drawPoints");
-		List<Point> points = Process.process();
-		Process.write("test.txt", points);
    }
 }
