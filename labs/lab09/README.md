@@ -69,16 +69,16 @@ public class CircleTest
 }
 ```
 
-29. Then change your catch block so you specifically catch NegativeRadiusExceptions and
+10. Then change your catch block so you specifically catch NegativeRadiusExceptions and
 ZeroRadiusExceptions. In the NegativeRadiusException code, additionally print out the radius.
 System.out.println(e.getMessage() + ": " + e.radius());
 
 
-30. Experiment again with constructing various valid and invalid Circles.
-31. Remove (or comment out) the NegativeRadiusException from your catch block and then
+11. Experiment again with constructing various valid and invalid Circles.
+12. Remove (or comment out) the NegativeRadiusException from your catch block and then
     construct the Circle with a negative radius. Where does the error message appear?
-32. What happens if you construct a bad Circle before the try block?
-33. Change the code back to exactly how it is shown in Step 9. Put a return statement in the catch
+13. What happens if you construct a bad Circle before the try block?
+14. Change the code back to exactly how it is shown in Step 9. Put a return statement in the catch
     block after the message is printed. Predict what will be printed when the code runs. Do the "In
     finally" or "Done" get printed?
 
