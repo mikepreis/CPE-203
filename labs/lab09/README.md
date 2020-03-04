@@ -6,7 +6,7 @@ creating an object that represents a circle.
 ## Objectives
 
 ```
- To be able to develop your test own Exception class.
+ To be able to develop and test your own Exception class.
  To be able to add an Exception mechanism to an existing class.
  To explore the differences between checked and unchecked Exceptions.
  To be able to write code that uses a try-catch-finally block.
