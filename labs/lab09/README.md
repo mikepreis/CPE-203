@@ -32,14 +32,9 @@ do not need to formally answer the questions, but make sure you know what the an
     - Create a default constructor that calls the parent constructor with the message “zero radius”.
 5. Write a class called NegativeRadiusException that extends CircleException.
     - Create a private double instance variable to store the radius.
-    - Create a single constructor that accepts a radius as a double. Call the parent constructor with
-
-
-```
-the message “negative radius”. Update the instance variable with the value passed to the
-constructor.
-```
-- Create a public method radius() to query for the radius.
+    - Create a single constructor that accepts a radius as a double. Call the parent constructor with the message "negative         radius". Update the instance variable with the value passed to the constructor.
+    - Create a public method radius() to query for the radius.
+    
 6. Modify the Circle class such that it examines the radius given in the non-default constructor.
 Throw a ZeroRadiusException if the given radius is 0. Compile the class... you should get an
 error.
