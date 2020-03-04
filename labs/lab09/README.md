@@ -40,6 +40,7 @@ Throw a ZeroRadiusException if the given radius is 0. Compile the class... you s
 error.
 7. Fix your error by having CircleException extend RuntimeException instead of Exception. Why did
 this fix the error? What else could you have done to fix the error?
+    Answer: There are two types of exceptions in Java; checked and un-checked. Checked exceptions must be handled explicitly by the code, whereas un-checked exceptions do not need to be explicitly handled. Any exception that derives from the Exception class is a checked exception, and therefore must be handled using try/catch blocks or a "throws" statement. Switching to RunTimeException (which is an un-checked exception) made it so we don't have to have our code handle the exception. 
 8. Modify the Circle class such that it throws a NegativeRadiusException if a negative radius is
 given to the constructor.
 9. Create a CircleTest class using the code shown below. Compile and run the code. The Circle
