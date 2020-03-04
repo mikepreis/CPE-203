@@ -47,7 +47,8 @@ given to the constructor.
 should only get printed if the Circle constructor is successful. Why? Change the value given to
 your Circle constructor such that you try it with a valid radius, a zero radius, and a negative
 radius. When does the Circle get printed? When does the "In finally" get printed? When does the
-"Done" get printed?
+"Done" get printed?\
+Answer: The circle instance should not have a negative or zero radius. "In finally" gets printed every time. 
 
 ```java
 public class CircleTest
