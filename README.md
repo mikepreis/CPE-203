@@ -72,7 +72,7 @@ edition and alternate textbooks covering java 8 are acceptable.
     43. Decoupling classes\
     44. Helper and inner classes
 - Stream Processing\
-    45. Lambda Expressions\
+    45. Lambda Expressions
 - Exception Handling\
     46. Read/Write text files\
     47. Process command line arguments\
