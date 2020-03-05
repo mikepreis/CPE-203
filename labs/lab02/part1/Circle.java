@@ -16,9 +16,8 @@ public class Circle {
         return this.radius;
     }
 
-//    public double perimeter() {
-//        return 2 * Math.PI * this.getRadius();
-//    }
-
+    public double perimeter() {
+        return 2 * Math.PI * this.getRadius();
+    }
 
 }

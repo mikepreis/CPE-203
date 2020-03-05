@@ -1,7 +1,5 @@
 import java.io.EOFException;
-import java.io.File;
 import java.io.FileNotFoundException;
-import java.util.concurrent.ExecutionException;
 
 public class ExceptWhat
 {
