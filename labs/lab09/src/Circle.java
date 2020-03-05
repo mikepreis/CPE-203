@@ -12,18 +12,10 @@ public class Circle
     }
     public Circle(double radius){
         if (radius == 0)
-            try {
-                throw new ZeroRadiusException();
-            } catch (ZeroRadiusException e) {
-                e.printStackTrace();
-            }
+            throw new ZeroRadiusException();
 
         if (radius < 0)
-            try {
-                throw new NegativeRadiusException(radius);
-            } catch (NegativeRadiusException e) {
-                e.printStackTrace();
-            }
+           throw new NegativeRadiusException(radius);
 
         this.radius = radius;
     }

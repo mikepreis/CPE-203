@@ -1,4 +1,4 @@
-public class CircleException extends Exception {
+public class CircleException extends RuntimeException {
 
     public CircleException(String message) {
         super(message);

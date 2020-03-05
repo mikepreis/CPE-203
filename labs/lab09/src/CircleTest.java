@@ -6,10 +6,14 @@ public class CircleTest
             Circle c1 = new Circle(-1);
             System.out.println(c1);
         }
-        catch (ZeroRadiusException | NegativeRadiusException e)
+        catch (ZeroRadiusException e)
         {
             System.out.println(e.getMessage());
-        } finally {
+        }
+        catch (NegativeRadiusException e) {
+            System.out.println(e.getMessage() + ": " + e.radius());
+        }
+        finally {
             System.out.println("In finally.");
         }
         System.out.println("Done.");

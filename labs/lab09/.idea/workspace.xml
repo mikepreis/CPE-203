@@ -10,9 +10,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Lab09Tests.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Lab09Tests.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lab09.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/CircleTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/CircleTest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/NegativeRadiusException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/NegativeRadiusException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/ZeroRadiusException.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/ZeroRadiusException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/Circle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/CircleException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/CircleTest.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/NegativeRadiusException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/ZeroRadiusException.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Circle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Circle.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CircleException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CircleException.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/CircleTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/CircleTest.java" afterDir="false" />
