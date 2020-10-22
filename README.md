@@ -16,11 +16,11 @@ edition and alternate textbooks covering java 8 are acceptable.
 
 # Syllabus
 
-- Introduction
-    1. Computer programming
-    2. Compile and run programs
-    3. Compile time vs. run time errors
-    4. Algorithms and Pseudo code
+- Introduction\
+    1. Computer programming\
+    2. Compile and run programs\
+    3. Compile time vs. run time errors\
+    4. Algorithms and Pseudo code\
 - Using Objects\
     5. Variables\
     6. Classes and objects\
